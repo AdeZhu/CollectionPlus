@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog alert_btn;
     private ImageView ivRunningMan;
     private AnimationDrawable mAnimationDrawable;
+    private Dialog bottomDialog = null;
 
     //其他变量
     private String dirname = "Java";
@@ -205,6 +206,10 @@ public class MainActivity extends AppCompatActivity {
         // 如果有match
         if (matcher.matches()) {
             String link = matcher.group(1);
+            // 将link存入sharedPreferences
+            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("link", link);
             return link;
         } else {
             return null;
